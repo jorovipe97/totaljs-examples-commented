@@ -1,0 +1,50 @@
+@{meta('Homepage')}
+
+@{section footer}
+    <br />
+    <div style="background-color:#E0E0E0;padding:10px">THIS IS FOOTER IN LAYOUT</div>
+@{end}
+
+@{helper address(city, street)}
+    <address>
+        @{city}<br />
+        @{street}
+    </address>
+@{end}
+
+<div><strong>Welcome!</strong></div>
+<div>partial.html in view &rarr; @{view('partial')}</div>
+
+@{viewToggle(new Date().getSeconds() % 2 == 0, 'dynamic')}
+
+@{if (1 === 1)}
+
+	VIEW ENGINE
+	<div>Title: @{title}</div>
+
+@{else}
+
+	HA HA HA
+
+@{endif}
+
+<h2>Dynamic view</h2>
+
+@{viewCompile('Current date: @{model.format(\'dd.MM.yyyy HH:mm\')}', new Date())}
+
+<h2>Foreach</h2>
+
+@{foreach m in [1, 2, 3, 4]}
+    <div>@{m} - @{index}</div>
+@{end}
+
+<br />
+<br />
+
+<h2>Inline helper</h2>
+<br />
+<div>Address 1:</div>
+@{address('Slovakia', 'Teplicka')}
+<br />
+<div>Address 2:</div>
+@{address('Germany', 'Berlin')}

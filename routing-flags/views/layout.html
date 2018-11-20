@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    @{meta}
+    <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=10" />
+	<meta name="format-detection" content="telephone=no"/>
+	<meta name="viewport" content="width=1024, user-scalable=yes" />
+	<meta name="robots" content="all,follow" />
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<style type="text/css">
+		body { padding: 50px; margin: 0; font:normal 12px Arial; color: gray }
+		a { float:left; margin: 0 5px 0 0; font-size: 13px; }
+		p { background-color: #F0F0F0; padding: 5px; font:bold 15px Arial; }
+	</style>
+	<script type="text/javascript">
+
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.open('POST', '/xhr/post/');
+		
+		// Gets the parsed data from the request body. Only for the POST/PUT/DELETE methods.
+		xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+		xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+		xmlhttp.onload = function () {
+			console.log(xmlhttp.responseText);
+		};
+		var body = JSON.stringify({
+			name: 'jose',
+			surname: 'villalobos'
+		});
+		xmlhttp.send(body);
+
+		/*$(document).ready(function () {
+			$.ajax('/xhr/post/', {
+				type: 'post',
+				dataType: 'json',
+				data: JSON.stringify({name: 'jose', surname: 'villalobos'}),
+				complete: function ( jqXHR, textStatus) {
+					console.log(jqXHR);
+					console.log(textStatus);
+				}
+			})
+		});*/
+	</script>
+</head>
+<body>
+
+	<div>@{body}</div>
+
+</body>
+</html>

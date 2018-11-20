@@ -1,0 +1,16 @@
+@{helper test(max)}
+    @{foreach m in new Array(max)}
+        <div>@{index}</div>
+    @{end}
+@{end}
+
+<br />
+<br />
+@{helpers.say('<b>WARNING: XSS</b>')}
+<br />
+<br />
+@{helpers.say('<b>WARNING: XSS</b>', true)}
+<br />
+<h2>Inline helper</h2>
+<br />
+@{test(10)}
