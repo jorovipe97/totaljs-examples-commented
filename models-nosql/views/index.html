@@ -1,0 +1,34 @@
+<h1>Create New Produc</h1>
+<form>
+	<input id="name" type="text" name="name" placeholder="Product name">
+	<input id="price" type="number" name="price" placeholder="Product price">
+	<input type="button" name="submit" value="Create Product" onclick="send()">
+</form>
+
+<script type="text/javascript">
+	function send() {
+		var nameVal = document.getElementById('name').value;
+		var priceVal = +document.getElementById('price').value;
+
+		$(document).ready(function () {
+			$.ajax('/products/new/', {
+				type: 'post',
+				dataType: 'json',
+				data: JSON.stringify({
+					name: nameVal,
+					price: priceVal
+				}),
+				complete: function ( jqXHR, textStatus) {
+					console.log(jqXHR);
+					console.log(textStatus);
+				}
+			})
+		});
+
+
+		/*create_product_req({
+			name: nameVal,
+			price: priceVal
+		});*/
+	}
+</script>

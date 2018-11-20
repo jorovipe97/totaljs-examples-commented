@@ -69,7 +69,7 @@ function xhr_example_post() {
 	// Header : value
 	// I put "XMLHttpRequest" here, but you can use anything you want.
 	// X-Requested-With : XMLHttpRequest
-	this.plain(this.body);
+	this.plain(this.body /*+ '\n\n\n' +this.query*/);
 	// http://docs.partialjs.com/HttpRouteOptionsFlags/#post
 }
 
