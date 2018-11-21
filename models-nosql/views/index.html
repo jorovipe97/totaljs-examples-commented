@@ -3,6 +3,10 @@
 	<input id="name" type="text" name="name" placeholder="Product name">
 	<input id="price" type="number" name="price" placeholder="Product price">
 	<input type="button" name="submit" value="Create Product" onclick="send()">
+
+	<div id="message">
+		
+	</div>
 </form>
 
 <script type="text/javascript">
@@ -10,25 +14,52 @@
 		var nameVal = document.getElementById('name').value;
 		var priceVal = +document.getElementById('price').value;
 
-		$(document).ready(function () {
+		/*$(document).ready(function () {
 			$.ajax('/products/new/', {
 				type: 'post',
 				dataType: 'json',
-				data: JSON.stringify({
+				data: {
 					name: nameVal,
 					price: priceVal
-				}),
+				},
 				complete: function ( jqXHR, textStatus) {
 					console.log(jqXHR);
 					console.log(textStatus);
 				}
 			})
-		});
+		});*/
 
 
-		/*create_product_req({
+		create_product_req({
 			name: nameVal,
 			price: priceVal
-		});*/
+		});
 	}
+
+	/*ON('products.save', function (d) {
+		console.log('Product saved');
+	});*/
+
+	/*ON('products.save', function () {
+		console.log('Product saved');
+	});*/
+
+	/*function init() {
+  		var el = document.getElementById('message');
+		var obj = new EventSource('/one-way-messaging/');
+
+		obj.onmessage = function(ev) {
+  			el.innerHTML = ev.data + '<br />' + el.innerHTML;
+  		};
+
+  		obj.addEventListener('end', function() {
+  			el.innerHTML = '----- end<br />' + el.innerHTML;
+  		}, true);
+
+  		obj.onerror = function(e) {
+  			el.innerHTML = '----- error<br />' + el.innerHTML;
+  		};
+	}
+
+	setTimeout(init, 500);*/
 </script>

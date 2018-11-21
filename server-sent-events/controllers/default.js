@@ -1,18 +1,19 @@
 exports.install = function() {
 	F.route('/');
-	F.route('/one-way-messaging/', view_SSE, ['sse']);
+	F.route('/one-way-messaging/', view_SSE, ['sse']); // sse: Server-Sent Event
 };
 
 function view_SSE() {
 
 	var self = this;
 	var indexer = 0;
+	// self.sseID: Gets the lastEventID (only for Server Sent Events).
 	var counter = parseInt(self.sseID || '0');
 
 	console.log('Last event ID:', self.sseID);
 
 	var interval = setInterval(function() {
-
+		// if no conected clear interval
 		if (!self.isConnected) {
 			clearInterval(interval);
 			return;

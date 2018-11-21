@@ -3,6 +3,7 @@
 <head>
 	<title>My Site</title>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
 	<script type="text/javascript">
 		function create_product_req(product)
 		{
@@ -11,7 +12,7 @@
 			
 			// Gets the parsed data from the request body. Only for the POST/PUT/DELETE methods.
 			xmlhttp.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-			xmlhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+			xmlhttp.setRequestHeader('Content-Type', 'text/json; charset=UTF-8');
 
 			xmlhttp.onload = function () {
 				console.log(xmlhttp.responseText);
@@ -20,6 +21,7 @@
 			xmlhttp.send(body);
 		}		
 	</script>
+	@{import('jctajr.min.js', 'main.js')}
 </head>
 <body>
 	<div>@{body}</div>
