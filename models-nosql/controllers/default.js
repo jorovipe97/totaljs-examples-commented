@@ -46,7 +46,7 @@ function http_408_get()
 function http_408() {
 	var self = this;
 
-	// Insert a file in the someDB database
+	// Insert a document in the someDB database
 	var db = NOSQL('someDB');
 	db.insert(self.body);
 
